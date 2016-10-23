@@ -1,11 +1,10 @@
 #include "stdafx.h"
-#include "https_client.h"
+#include "http_client.h"
 #include "http_servlet.h"
 
-http_servlet::http_servlet(acl::ostream& out, acl::polarssl_conf* conf)
+http_servlet::http_servlet(acl::ostream& out)
 	: handled_(false)
 	, out_(out)
-	, client_ssl_conf_(conf)
 {
 
 }
@@ -126,6 +125,6 @@ bool http_servlet::doPost(acl::HttpServletRequest& req,
 	out_.format(">>> request url: %s\r\n", url_.c_str());
 	printf(">>>getQueryString: %s\r\n", req.getQueryString());
 
-	https_client client(req, res, out_, client_ssl_conf_);
+	http_client client(req, res, out_);
 	return client.http_request();
 }

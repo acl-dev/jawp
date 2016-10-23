@@ -3,7 +3,7 @@
 class http_servlet : public acl::HttpServlet
 {
 public:
-	http_servlet(acl::ostream& out, acl::polarssl_conf* conf);
+	http_servlet(acl::ostream& out);
 	~http_servlet();
 
 protected:
